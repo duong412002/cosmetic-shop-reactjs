@@ -1,0 +1,24 @@
+.categories__item {
+    height: 270px;
+    position: relative;
+
+    h5 {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        padding: 0 20px;
+        bottom: 20px;
+        text-align: center;
+
+        a {
+            font-size: 18px;
+            color: var(--normal-color);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 12px 0 10px;
+            background: var(--white-color);
+            display: block;
+        }
+    }
+}

@@ -1,0 +1,41 @@
+.home__item {
+    position: relative;
+}
+
+.home__item img {
+    width: 100%;
+}
+
+.home__text {
+    position: absolute;
+    left: 75px;
+    top: 50%;
+    transform: translateY(-50%);
+    span {
+        font-size: 14px;
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 4px;
+        color: var(--primary-color);
+    }
+
+    h2 {
+        font-size: 46px;
+        color: var(--heading-color-2);
+        line-height: 52px;
+        font-weight: 700;
+        margin: 10px 0;
+    }
+
+    p {
+        margin-bottom: 35px;
+    }
+    a {
+        color: red;
+        span {
+            color: #fff;
+            letter-spacing: 1;
+            
+        }
+    }
+}
