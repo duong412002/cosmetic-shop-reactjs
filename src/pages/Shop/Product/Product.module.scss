@@ -1,119 +1,14 @@
-.filter__item {
-    padding-top: 45px;
-    border-top: 1px solid var(--border);
-    padding-bottom: 20px;
-    margin-top: 50px;
-}
-
-.wrap-filter {
-    align-items: center;
-}
-
-.filter__sort {
-    margin-bottom: 15px;
-
-    select {
-        outline: none;
-        border: none;
-        background-color: transparent;
-        margin-left: 20px;
-        font-weight: bold;
-        font-size: 18px;
-    }
-
-    span {
-        font-size: 16px;
-        color: var(--para-color);
-        display: inline-block;
-    }
-
-    .nice-select {
-        background-color: #fff;
-        border-radius: 0;
-        border: none;
-        display: inline-block;
-        float: none;
-        height: 0;
-        line-height: 0;
-        padding-left: 18px;
-        padding-right: 30px;
-        font-size: 16px;
-        color: var(--normal-color);
-        font-weight: 700;
-        cursor: pointer;
-
-        span {
-            color: var(--normal-color);
-        }
-
-        &:after {
-            border-bottom: 1.5px solid #1c1c1c;
-            border-right: 1.5px solid #1c1c1c;
-            height: 8px;
-            margin-top: 0;
-            right: 16px;
-            width: 8px;
-            top: -5px;
-        }
-    }
-
-    .nice-select.open .list {
-        opacity: 1;
-        pointer-events: auto;
-        -webkit-transform: scale(1) translateY(0);
-        -ms-transform: scale(1) translateY(0);
-        transform: scale(1) translateY(0);
-    }
-
-    .nice-select .list {
-        border-radius: 0;
-        margin-top: 0;
-        top: 15px;
-    }
-
-    .nice-select .option {
-        line-height: 30px;
-        min-height: 30px;
+// .filter__item {
+//     padding-top: 45px;
+//     border-top: 1px solid var(--border);
+//     padding-bottom: 20px;
+//     margin-top: 50px;
+// }
+.wrapper-img {
+    img {
+        width: 100%;
     }
 }
-
-.filter__found {
-    text-align: center;
-    margin-bottom: 15px;
-
-    h6 {
-        font-size: 16px;
-        color: #b2b2b2;
-
-        span {
-            color: var(--normal-color);
-            font-weight: 700;
-            margin-right: 5px;
-        }
-    }
-}
-
-.filter__option {
-    text-align: right;
-    margin-bottom: 15px;
-
-    span {
-        font-size: 24px;
-        color: #b2b2b2;
-        margin-right: 10px;
-        cursor: pointer;
-        transition: all 0.3s;
-
-        &:last-child {
-            margin: 0;
-        }
-
-        &:hover {
-            color: var(--primary-color);
-        }
-    }
-}
-
 
 // --------Product---------//
 
@@ -132,7 +27,6 @@
 }
 
 .product__item__pic {
-    height: 270px;
     position: relative;
     overflow: hidden;
 }
@@ -165,7 +59,7 @@
                 background: var(--primary-color);
                 border-color: var(--primary-color);
 
-                i {
+                svg {
                     color: var(--white-color);
                     transform: rotate(360deg);
                 }
@@ -185,7 +79,7 @@
             border-radius: 50%;
             transition: all 0.5s;
 
-            i {
+            svg {
                 position: relative;
                 transform: rotate(0);
                 transition: all 0.3s;
@@ -202,6 +96,17 @@
         color: var(--heading-color)-2;
         font-weight: 400;
         font-size: 16px;
+
+        a {
+            line-height: 1.8rem;
+            margin: 0 auto;
+            height: 3.6rem;
+            overflow: hidden;
+            display: block;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+        }
     }
 }
 

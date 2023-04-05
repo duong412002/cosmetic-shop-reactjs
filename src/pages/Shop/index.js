@@ -10,10 +10,15 @@ import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import Slider from 'react-slick';
 import { Fragment } from 'react';
+import { useDebounce } from '~/hooks';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faRetweet, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import { Row, Col } from 'react-bootstrap';
+
 
 const cx = classNames.bind(styles)
 
@@ -23,12 +28,27 @@ let settings = {
     speed: 1000,
     slidesToShow: 3,
     slidesToScroll: 1,
-    // autoplay: true,
-    // autoplaySpeed: 3000,
+    arrows: false,
+    autoplay: true,
+    autoplaySpeed: 3000,
 }
 
 function Shop() {
 
+    const [productValue, setProductValue] = useState([])
+    // const debounced = useDebounce(productValue, 10000)
+
+    useEffect(() => {
+        axios.get('http://localhost:8088/products')
+            .then((res) => {
+                setProductValue(res.data)
+                console.log(res.data)
+            })
+            .catch(() => {
+                console.error();
+            })
+
+    }, [])
 
     return (
         <Fragment>
@@ -164,7 +184,41 @@ function Shop() {
                     </div>
                 </Slider>
             </div>
-            <Product />
+            <div className={cx("filter__item")}>
+                <Row className={cx('wrap-filter')}>
+                    <Col md='5'>
+                        <div className={cx("filter__sort")}>
+                            <span>Sort By</span>
+                            <select>
+                                <option value="0">Default</option>
+                                <option value="0">Default</option>
+                            </select>
+                            {/* <div class="nice-select open" tabindex="0">
+                                <span class="current">Default</span>
+                                <ul class="list">
+                                    <li data-value="0" class="option">Default</li>
+                                    <li data-value="0" class="option selected focus">Default</li>
+                                </ul>
+                            </div> */}
+                        </div>
+                    </Col>
+                    <Col md='4'>
+                        <div className={cx("filter__found")}>
+                            <h6><span>16</span> Products found</h6>
+                        </div>
+                    </Col>
+                    <Col md='3'>
+                        <div className={cx("filter__option")}>
+                            123
+                        </div>
+                    </Col>
+                </Row>
+            </div>
+            <Row>
+                {productValue.map((product) => (
+                    <Product key={product.id} data={product} />
+                ))}
+            </Row>
         </Fragment>
     );
 }

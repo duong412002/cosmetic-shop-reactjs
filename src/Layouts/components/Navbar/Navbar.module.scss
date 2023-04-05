@@ -66,12 +66,7 @@
                 }
             }
 
-            &.active {
 
-                a {
-                    color: var(--primary-color);
-                }
-            }
 
             &:hover {
 
@@ -90,6 +85,12 @@
                 margin-right: 0;
             }
         }
+    }
+}
+
+.header-menu {
+    .active {
+        color: var(--primary-color);
     }
 }
 

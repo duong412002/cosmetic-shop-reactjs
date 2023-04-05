@@ -10,6 +10,7 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Row, Col } from 'react-bootstrap';
+import BreadCrumb from '../components/BreadCrumb';
 
 const cx = classNames.bind(styled)
 
@@ -19,6 +20,7 @@ function SidebarOnly({ children }) {
             <Header />
             <Navbar />
             <Hero />
+            <BreadCrumb />
             <div className={cx('container')}>
                 <Row>
                     <div className={cx('wrapper__content')}>

@@ -5,7 +5,7 @@ import images from '~/assets/images';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import 'bootstrap/dist/js/bootstrap.min.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -28,18 +28,18 @@ function Navbar() {
                         <Col md={6}>
                             <div className={cx('header__menu')}>
                                 <ul>
-                                    <li className={cx('active')}><Link to={'/'}>Home</Link></li>
-                                    <li><Link to={'/shop'}>Shop</Link></li>
+                                    <li><NavLink to={'/'}>Home</NavLink></li>
+                                    <li><NavLink to={'/shop'}>Shop</NavLink></li>
                                     <li>Pages
                                         <ul className={cx('header__menu__dropdown')}>
-                                            <li><Link >Shop Details</Link></li>
-                                            <li><Link >Shoping Cart</Link></li>
-                                            <li><Link >Check Out</Link></li>
-                                            <li><Link >Blog Details</Link></li>
+                                            <li><Link to={'/shopDetails'}>Shop Details</Link></li>
+                                            <li><Link to={'/shoppingCart'}>Shoping Cart</Link></li>
+                                            <li><Link to={'/checkout'}>Check Out</Link></li>
+                                            <li><Link to={'/blogDetails'}>Blog Details</Link></li>
                                         </ul>
                                     </li>
-                                    <li><Link >Blog</Link></li>
-                                    <li><Link to={'/contact'}>Contact</Link></li>
+                                    <li><NavLink to={'/blog'}>Blog</NavLink></li>
+                                    <li><NavLink to={'/contact'}>Contact</NavLink></li>
                                 </ul>
                             </div>
                         </Col>

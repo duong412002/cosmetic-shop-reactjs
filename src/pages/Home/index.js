@@ -7,6 +7,10 @@ import Button from '~/components/Button';
 
 import classNames from 'classnames/bind';
 import { Fragment } from 'react';
+import Categories from './Categories';
+import Featured from './Featured';
+
+
 
 const cx = classNames.bind(styles)
 
@@ -22,7 +26,8 @@ function Home() {
                     <Button primary to={'/shop'}>SHOP NOW</Button>
                 </div>
             </div>
-
+            <Categories></Categories>
+            <Featured></Featured>
         </Fragment>
     );
 }

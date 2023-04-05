@@ -1,7 +1,8 @@
 
 import Header from "../components/Header";
 import Navbar from "../components/Navbar";
-import Search from "../components/Hero";
+import Hero from "../components/Hero";
+import BreadCrumb from "../components/BreadCrumb";
 import Footer from "../components/Footer";
 import styles from './DefaulLayout.module.scss'
 
@@ -14,7 +15,8 @@ function DefaulLayout({ children }) {
         <div>
             <Header />
             <Navbar />
-            <Search />
+            <Hero />
+            <BreadCrumb />
             <div className={cx('container')}>
                 <div className={cx('content')}>
                     {children}

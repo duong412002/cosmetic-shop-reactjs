@@ -1,0 +1,44 @@
+.breadcrumb-section {
+    position: relative;
+    padding-bottom: 50px;
+
+    img {
+        width: 100%;
+        display: inline-block;
+        min-height: 164px;
+    }
+
+    .breadcrumb__text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -75%);
+        color: #fff;
+
+        div:first-child {
+            font-size: 4.6rem;
+            text-transform: capitalize;
+            text-align: center;
+        }
+
+        div:last-child {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0px 10px;
+            a {
+                color: #fff;
+                font-weight: 900;
+                font-size: 1.6rem;
+            }
+            span {
+                font-size: 2rem;
+            }
+            h2 {
+                text-transform: capitalize;
+                font-size: 1.6rem;
+                margin-bottom: 0;
+            }
+        }
+    }
+}

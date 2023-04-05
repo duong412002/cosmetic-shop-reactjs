@@ -1,5 +1,7 @@
 .slick-list {
-    margin: 0 -15px !important;
+    margin: 0 -9px !important;
+    position: relative;
+
     img {
         width: 100% !important;
     }
@@ -7,11 +9,12 @@
 
 .slick-track {
     display: flex !important;
-    gap: 0 20px !important;
+    gap: 0 15px !important;
 }
 
 .slick-dots {
     bottom: -51px !important;
+
     li {
         font-size: 0px !important;
         border: 1px solid #b2b2b2 !important;
@@ -20,16 +23,54 @@
         border-radius: 100rem !important;
         margin: 0 8px !important;
     }
+
     li.slick-active {
         background-color: #707070;
         border-color: #6f6f6f;
         border-radius: 100rem !important;
     }
-    button::before{
+
+    button::before {
         content: '' !important;
     }
 }
 
-.slick-prev,.slick-next {
-    display: none !important;
+.slick-prev,
+.slick-next {
+    position: absolute !important;
+    font-size: 18px !important;
+    color: #1c1c1c !important;
+    height: 70px !important;
+    width: 30px !important;
+    line-height: 70px !important;
+    text-align: center !important;
+    border: 1px solid #ebebeb !important;
+    top: 50% !important;
+    background: #ffffff !important;
+    -webkit-transform: translateY(-50%) !important;
+
+    svg {
+        position: absolute;
+        bottom: 50%;
+        -webkit-transform: translateY(-50%) !important;
+    }
+
+}
+
+.slick-prev {
+    left: -55px !important;
+
+    svg {
+        bottom: 15px !important;
+        left: 8px !important;
+    }
+}
+
+.slick-next {
+    right: -55px !important;
+
+    svg {
+        bottom: 15px !important;
+        right: 8px !important;
+    }
 }

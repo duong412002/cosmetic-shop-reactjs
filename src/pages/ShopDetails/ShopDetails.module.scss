@@ -1,0 +1,221 @@
+/*---------------------
+  Shop Details
+-----------------------*/
+.product-details {
+    padding-top: 80px;
+}
+
+.product__details__pic__item {
+    margin-bottom: 20px;
+
+    img {
+        min-width: 100%;
+    }
+}
+
+.product__details__pic__slider {
+    // display: flex;
+    // justify-content: space-between;
+    // align-items: center;
+
+    img {
+        cursor: pointer;
+    }
+}
+
+.product__details__text {
+    margin-left: 20px;
+
+    h3 {
+        color: var(--heading-color)-2;
+        font-weight: 900;
+        font-size: 3rem;
+        margin-bottom: 16px;
+        line-height: 22px;
+    }
+
+    .product__details__rating {
+        font-size: 14px;
+        margin-bottom: 12px;
+
+        svg {
+            color: #EDBB0E;
+        }
+
+        span {
+            color: #dd2222;
+            margin-left: 4px;
+        }
+    }
+
+    .product__details__price {
+        font-size: 30px;
+        color: #dd2222;
+        font-weight: 600;
+        margin-bottom: 15px;
+    }
+
+    p {
+        margin-bottom: 45px;
+    }
+
+    ul {
+        border-top: 1px solid var(--border);
+        padding-top: 40px;
+        margin-top: 50px;
+
+        li {
+            font-size: 16px;
+            color: var(--normal-color);
+            list-style: none;
+            line-height: 36px;
+
+            b {
+                font-weight: 700;
+                width: 170px;
+                display: inline-block;
+            }
+
+            span {
+
+                samp {
+                    color: #dd2222;
+                }
+            }
+
+            .share {
+                display: inline-block;
+
+                a {
+                    display: inline-block;
+                    font-size: 15px;
+                    color: var(--normal-color);
+                    margin-right: 25px;
+
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.wrap-quantity {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    .icon_heart_alt {
+        display: inline-block;
+        font-size: 16px;
+        color: var(--para-color);
+        padding: 11px 18px 12px;
+        background: var(--background);
+        margin-left: 6px;
+    }
+
+    .product__details__quantity {
+        display: inline-block;
+        margin-right: 6px;
+    }
+
+    .pro-qty {
+        position: relative;
+        background: var(--background);
+        padding: 11px 8px 11px;
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+
+        input {
+            font-size: 16px;
+            color: var(--para-color);
+            border: none;
+            background: var(--background);
+            text-align: center;
+            max-width: 100px;
+        }
+
+        .qtybtn {
+            font-size: 16px;
+            color: var(--para-color);
+            cursor: pointer;
+            display: inline-block;
+        }
+    }
+
+}
+
+.product__details__tab {
+    padding-top: 85px;
+
+    .nav-tabs {
+        border-bottom: none;
+        justify-content: center;
+        text-align: center;
+        position: relative;
+
+        &:before {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            height: 1px;
+            width: 450px;
+            background: var(--border);
+            content: '';
+        }
+
+        &:after {
+            position: absolute;
+            right: 0;
+            top: 50%;
+
+            height: 1px;
+            width: 450px;
+            background: var(--border);
+            content: '';
+        }
+
+        li {
+            a {
+                font-size: 2rem;
+                color: #495057;
+                font-weight: bold;
+                border: none;
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+                padding: 0;
+            }
+        }
+    }
+
+}
+.product__details__tab__desc {
+    padding-top: 44px;
+
+    h6 {
+        font-size: 1.6rem;
+        font-weight: 900;
+        color: #333333;
+        margin-bottom: 26px;
+    }
+
+    p {
+        color: #666666;
+    }
+}
+
+/*---------------------
+  Shop Details
+-----------------------*/
+.related-product {
+    padding-bottom: 30px;
+}
+
+.related__product__title {
+    margin-bottom: 70px;
+}
+
+// slick slider
+

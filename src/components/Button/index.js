@@ -6,7 +6,7 @@ import styles from './Button.module.scss';
 
 const cx = classNames.bind(styles);
 
-function Button( {to, href, primary, children, onClick, ...passProps} ) {
+function Button( {to, href, primary, flex, children, onClick, ...passProps} ) {
     let Comp = 'button'
 
     const props = {
@@ -23,7 +23,8 @@ function Button( {to, href, primary, children, onClick, ...passProps} ) {
     }
 
     const classes = cx('wrap-btn', {
-        primary 
+        primary,
+        flex, 
     })
 
     return (
