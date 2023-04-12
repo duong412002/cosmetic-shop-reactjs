@@ -65,12 +65,15 @@ ol {
 -----------------------*/
 .section-title {
   margin-bottom: 50px;
+  text-align: center;
 
-  h2 {
+  h2,h4 {
     color: var(--normal-color);
     font-weight: 900;
     position: relative;
     font-size: 3.6rem;
+    display: inline-block;
+    position: relative;
 
     &:after {
       position: absolute;
@@ -78,7 +81,7 @@ ol {
       bottom: -15px;
       right: 0;
       height: 4px;
-      width: 80px;
+      width: 100%;
       background: var(--primary-color);
       content: "";
     }

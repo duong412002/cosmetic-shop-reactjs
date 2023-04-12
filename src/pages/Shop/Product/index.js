@@ -13,31 +13,32 @@ const cx = classNames.bind(styles)
 
 function Product({ data }) {
 
+    const amount = data.price;
+    const formattedAmount = amount.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
 
 
-    return (<Col md='4'>
-
-        <div className={cx("product__item")}>
-            <div className={cx("product__item__pic")}>
-                <div className={cx('wrapper-img')}>
-                    <img src={images.product} alt="" />
-                    <ul className={cx("product__item__pic__hover")}>
-                        <li><Link><FontAwesomeIcon icon={faHeart} /></Link></li>
-                        <li><Link><FontAwesomeIcon icon={faRetweet} /></Link></li>
-                        <li><Link><FontAwesomeIcon icon={faShoppingCart} /></Link></li>
-                    </ul>
+    return (
+        <Col md='4'>
+            <div className={cx("product__item")}>
+                <div className={cx("product__item__pic")}>
+                    <div className={cx('wrapper-img')}>
+                        <img src={images.product} alt="" />
+                        <ul className={cx("product__item__pic__hover")}>
+                            <li><Link><FontAwesomeIcon icon={faHeart} /></Link></li>
+                            <li><Link><FontAwesomeIcon icon={faRetweet} /></Link></li>
+                            <li><Link><FontAwesomeIcon icon={faShoppingCart} /></Link></li>
+                        </ul>
+                    </div>
+                </div>
+                <div className={cx("product__item__text")}>
+                    <h5><Link>{data.name}</Link></h5>
+                    <div className={cx("product__item__price")}>
+                        {formattedAmount}
+                    </div>
                 </div>
             </div>
-            <div className={cx("product__item__text")}>
-                <h5><Link>{data.name}</Link></h5>
-                <div className={cx("product__item__price")}>
-                    {data.price}
-                </div>
-            </div>
-        </div>
-
-
-    </Col>);
+        </Col>
+    );
 }
 
 export default Product;

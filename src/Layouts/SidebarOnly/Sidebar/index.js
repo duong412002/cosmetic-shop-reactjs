@@ -1,28 +1,37 @@
 
 
 import styles from './Sidebar.module.scss';
+import * as categoryServices from '~/apiServices/categoryServices'
 
 import classNames from 'classnames/bind';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles)
 
 function Sidebar() {
+
+    const [categoryValue, setCategoryValue] = useState([])
+
+    useEffect(() => {
+        const fetchApi = async () => {
+            const result = await categoryServices.category();
+
+            setCategoryValue(result)
+        }
+        fetchApi();
+    }, [])
+
     return (
         <div className={cx('sidebar')}>
             <div className={cx('sidebar__item')}>
-                <h4>Department</h4>
+                <h4>Categories</h4>
                 <ul>
-                    <li><Link >Fresh Meat</Link></li>
-                    <li><Link >Vegetables</Link></li>
-                    <li><Link >Fruit & Nut Gifts</Link></li>
-                    <li><Link >Fresh Berries</Link></li>
-                    <li><Link >Ocean Foods</Link></li>
-                    <li><Link >Butter & Eggs</Link></li>
-                    <li><Link >Fastfood</Link></li>
-                    <li><Link >Fresh Onion</Link></li>
-                    <li><Link >Papayaya & Crisps</Link></li>
-                    <li><Link >Oatmeal</Link></li>
+                    {categoryValue.map((category) => (
+                        <li key={category.id}>
+                            <Link>{category.name}</Link>
+                        </li>
+                    ))}
                 </ul>
             </div>
 

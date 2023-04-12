@@ -9,6 +9,7 @@ import classNames from 'classnames/bind';
 import { Fragment } from 'react';
 import Categories from './Categories';
 import Featured from './Featured';
+import Blog from '../Blog';
 
 
 
@@ -28,6 +29,10 @@ function Home() {
             </div>
             <Categories></Categories>
             <Featured></Featured>
+            <div className={cx("section-title")}>
+                <h2>From The Blog</h2>
+            </div>
+            <Blog />
         </Fragment>
     );
 }

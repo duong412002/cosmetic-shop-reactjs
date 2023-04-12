@@ -4,20 +4,20 @@ import styles from './Shop.module.scss';
 import './slick-slider.scss';
 import images from '~/assets/images';
 import Product from './Product';
+import * as productServices from '~/apiServices/productServices'
 
 import React from "react";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import Slider from 'react-slick';
 import { Fragment } from 'react';
-import { useDebounce } from '~/hooks';
-import axios from 'axios';
 import { useState, useEffect } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faRetweet, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Row, Col } from 'react-bootstrap';
+import Pagination from '~/components/Pagination';
 
 
 const cx = classNames.bind(styles)
@@ -34,25 +34,36 @@ let settings = {
 }
 
 function Shop() {
-
     const [productValue, setProductValue] = useState([])
-    // const debounced = useDebounce(productValue, 10000)
+    const [totalProduct, setTotalProduct] = useState()
+    const [page, setPage] = useState(0)
+    const [sz] = useState(4)
+    const {pageShop} = useParams();
+
 
     useEffect(() => {
-        axios.get('http://localhost:8088/products')
-            .then((res) => {
-                setProductValue(res.data)
-                console.log(res.data)
-            })
-            .catch(() => {
-                console.error();
-            })
 
-    }, [])
+        const fetchApi = async () => {
+            const result = await productServices.product(page, sz);
+            const totalPage = await productServices.productTotal();
 
+            setProductValue(result);
+            setTotalProduct(totalPage);
+        }
+        fetchApi();
+    }, [pageShop])
+
+    const paginate = (pageNumber) => {
+        setPage(pageNumber)
+    }
+    const handlePaginate = (newPage) => {
+        setPage(newPage)
+    }
     return (
         <Fragment>
+
             <div className={cx('product__discount')}>
+
                 <div className={cx("section-title product__discount__title")}>
                     <h2>Sale Off</h2>
                 </div>
@@ -219,6 +230,13 @@ function Shop() {
                     <Product key={product.id} data={product} />
                 ))}
             </Row>
+            <Pagination
+                sz={sz}
+                page={page}
+                totalProduct={totalProduct}
+                paginate={paginate}
+                onPageChange={handlePaginate}
+            />
         </Fragment>
     );
 }

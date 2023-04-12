@@ -11,7 +11,7 @@ import BlogDetails from '~/pages/BlogDetails';
 
 const publicRoutes = [
     { path: '/', component: Home },
-    { path: '/shop', component: Shop, layout: SidebarOnly},
+    { path: '/shop/:pageShop', component: Shop, layout: SidebarOnly},
     { path: '/contact', component: Contact },
     { path: '/shopDetails', component: ShopDetails },
     { path: '/checkout', component: Checkout },
