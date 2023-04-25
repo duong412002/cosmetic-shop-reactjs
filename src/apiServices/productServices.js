@@ -22,3 +22,12 @@ export const productTotal = async () => {
         console.log(error)
     }
 };
+
+export const getProductByCate = async (id) => {
+    try {
+        const res = await request.get(`products/category=${id}`);
+        return res.data;
+    } catch (error) {
+        console.log(error)
+    }
+};

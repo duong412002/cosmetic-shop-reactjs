@@ -4,12 +4,16 @@
 
 .categories {
     width: 262.5px;
+
     a {
         font-size: 16px;
         color: #1c1c1c;
         display: block;
     }
 }
+
+
+
 
 .hero {
     padding-bottom: 50px;
@@ -38,7 +42,7 @@
 .wrap-hero {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
 }
 
 .hero__categories__all {
@@ -143,37 +147,7 @@
     }
 }
 
-.hero__search__phone {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
-.hero__search__phone__icon {
-    font-size: 18px;
-    color: var(--primary-color);
-    height: 50px;
-    width: 50px;
-    background: var(--background);
-    line-height: 50px;
-    text-align: center;
-    border-radius: 50%;
-    float: left;
-    margin-right: 20px;
-}
-
-.hero__search__phone__text {
-    h5 {
-        color: var(--normal-color);
-        font-weight: 900;
-    }
-
-    span {
-        font-size: 14px;
-        color: var(--para-color);
-    }
-
-}
 
 .hero__item {
     height: 431px;
@@ -204,3 +178,6 @@
         margin-bottom: 35px;
     }
 }
+
+
+

@@ -1,11 +1,10 @@
 
 import styles from './Hero.module.scss';
 import Button from '~/components/Button';
-import './Hero.module.scss';
 
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faChevronDown, faPhone } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faChevronDown, faCartShopping } from '@fortawesome/free-solid-svg-icons';
 
 import 'bootstrap/dist/js/bootstrap.min.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -16,6 +15,7 @@ import { Wrapper as PopperWrapper } from '~/components/Popper';
 
 import Tippy from '@tippyjs/react/headless';
 import 'react-tippy/dist/tippy.css';
+import 'tippy.js/dist/tippy.css';
 
 
 const cx = classNames.bind(styles)
@@ -28,10 +28,8 @@ function Hero() {
     const show = () => setVisible(true)
     const hide = () => setVisible(false)
 
-    
-    
     return (
-        
+
         <div className={cx('hero')}>
             <div className={cx('container')}>
                 <Row>
@@ -39,11 +37,11 @@ function Hero() {
                         <Col md={3}>
                             <div className={cx('hero__categories')}>
                                 <Tippy
-                                    interactive={true} 
+                                    interactive={true}
                                     visible={visible}
                                     onClickOutside={hide}
                                     render={(attrs) => (
-                                        <div className={cx('categories')} tabIndex="-1" {...attrs}>         
+                                        <div className={cx('categories')} tabIndex="-1" {...attrs}>
                                             <PopperWrapper >
                                                 <Link to={'/shop'}> Vegetables </Link>
                                                 <Link> Fruit & Nut Gifts </Link>
@@ -59,8 +57,8 @@ function Hero() {
                                         </div>
                                     )}
                                 >
-                                    
-                                    <div onClick={visible ? hide : show}  className={cx('hero__categories__all')}>
+
+                                    <div onClick={visible ? hide : show} className={cx('hero__categories__all')}>
                                         <FontAwesomeIcon icon={faBars} />
                                         <span>All departments</span>
                                         <FontAwesomeIcon icon={faChevronDown} />
@@ -69,7 +67,7 @@ function Hero() {
                             </div>
                         </Col>
 
-                        <Col md={6}>
+                        <Col md={8}>
                             <div className={cx('hero__search__form')}>
                                 <form action="#">
                                     <input type="text" placeholder="What do yo u need?" />
@@ -78,20 +76,14 @@ function Hero() {
                             </div>
                         </Col>
 
-                        <Col md={3}>
-                            <div className={cx('hero__search__phone')}>
-                                <div className={cx('hero__search__phone__icon')}>
-                                    <FontAwesomeIcon icon={faPhone} />
-                                </div>
-                                <div className={cx('hero__search__phone__text')}>
-                                    <h5>+65 11.188.888</h5>
-                                    <span>support 24/7 time</span>
-                                </div>
-                            </div>
+                        <Col md={1}>
+                            
                         </Col>
                     </div>
                 </Row>
             </div>
+
+
         </div>
     );
 

@@ -2,13 +2,12 @@
     // margin-right: 54px;
 
     ul {
-
         li {
             list-style: none;
             display: inline-block;
-            margin-right: 50px;
+            margin-right: 70px;
             position: relative;
-            font-size: 14px;
+            font-size: 18px;
             color: var(--heading-color)-2;
             text-transform: uppercase;
             font-weight: 900;
@@ -18,8 +17,8 @@
 
             .header__menu__dropdown {
                 position: absolute;
-                left: -75%;
-                top: 60px;
+                left: -95%;
+                top: 100px;
                 background: #222222;
                 width: 180px;
                 z-index: 9;
@@ -54,7 +53,7 @@
             &:hover {
 
                 .header__menu__dropdown {
-                    top: 30px;
+                    top: 35px;
                     opacity: 1;
                     visibility: visible;
                 }

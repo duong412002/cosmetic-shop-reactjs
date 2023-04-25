@@ -381,4 +381,50 @@
         }
     }
 }
+.wrap-filter {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.warning {
+    position: fixed;
+    top: 32px;
+    right: 32px;
+    z-index: 999999;
+    background-color: #fff;
+    border-radius: 2px;
+    padding: 20px;
+    min-width: 400px;
+    max-width: 450px;
+    border-left: 4px solid;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.08);
+    transition: all linear 0.3s;
+    color: rgb(255, 0, 0,0.8);
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+    animation: slideInLeft;
+    svg {
+        margin-right: 12px;
+        font-size: 24px;
+        opacity: 0.8;
+    }
+}
 
+  
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(calc(100% + 32px));
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes fadeOut {
+    to {
+      opacity: 0;
+    }
+  }

@@ -4,9 +4,7 @@ import images from '~/assets/images';
 import Nav from './nav';
 
 import classNames from 'classnames/bind';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
-import { Link, NavLink, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Row, Col } from 'react-bootstrap';
@@ -14,6 +12,8 @@ import { Row, Col } from 'react-bootstrap';
 const cx = classNames.bind(styles);
 
 function Navbar() {
+
+
     return (
         <div className={cx('header-navbar')}>
             <div className={cx('container')}>
@@ -26,20 +26,19 @@ function Navbar() {
                                 </Link>
                             </div>
                         </Col>
-                        <Col md={6}>
+                        <Col md={8}>
                             <Nav />
                         </Col>
-                        <Col md={3}>
-                            <div className={cx('header__cart')}>
-                                <ul>
-                                    <li>
-                                        <Link ><FontAwesomeIcon icon={faCartShopping} />
-                                            <span className={cx('quantity-cart')}>3</span></Link>
-                                    </li>
-                                </ul>
-                                <div className="header__cart__price">item: <span>$150.00</span></div>
+                        {/* <Col md={3}>
+                            <div className={cx('hero__search__phone')}>
+                                <div className={cx('hero__search__phone__icon')}>
+                                    <FontAwesomeIcon icon={faPhone} />
+                                </div>
+                                <div className={cx('hero__search__phone__text')}>
+                                    <h5>+65 11.188.888</h5>
+                                </div>
                             </div>
-                        </Col>
+                        </Col> */}
                     </div>
                 </Row>
             </div>

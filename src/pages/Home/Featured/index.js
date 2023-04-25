@@ -5,12 +5,24 @@ import images from '~/assets/images';
 import './Featured.module.scss';
 import { Row, Col } from 'react-bootstrap';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faRetweet, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import * as productServices from '~/apiServices/productServices'
+import { OptionProduct } from '~/Layouts';
 
 const cx = classNames.bind(styles);
 function Featured() {
+
+    const [featureds, setFeatured] = useState([])
+
+    useEffect(() => {
+        const fetchApi = async () => {
+            const result = await productServices.product(0, 4)
+            setFeatured(result);
+        }
+        fetchApi();
+    }, [])   
+
     return (
         <div className={cx("featured")}>
             <Row>
@@ -33,81 +45,24 @@ function Featured() {
             </Row>
             <div className={cx("featured__filter")}>
                 <Row>
-                    <Col md={3}>
-                        <div className={cx("featured__item")}>
-                            <div className={cx("featured__item__pic")}>
-                                <img src={images.featured} alt='' />
-                                <ul className={cx("featured__item__pic__hover")}>
-                                    <li><Link><FontAwesomeIcon icon={faHeart} /></Link></li>
-                                    <li><Link><FontAwesomeIcon icon={faRetweet} /></Link></li>
-                                    <li><Link><FontAwesomeIcon icon={faShoppingCart} /></Link></li>
-                                </ul>
-                            </div>
-                            <div className={cx("featured__item__text")}>
-                                <h5><Link>Raisin’n’nuts</Link></h5>
-                                <div className={cx("featured__item__price")}>
-                                    $30.00
+                    {featureds.map((featured) => (
+                        <Col md={3} key={featured.id}>
+                            <div className={cx("featured__item")}>
+                                <div className={cx("featured__item__pic")}>
+                                    <img src={images.featured} alt='' />
+                                    <ul className={cx("featured__item__pic__hover")}>
+                                        <OptionProduct data={featured} />
+                                    </ul>
+                                </div>
+                                <div className={cx("featured__item__text")}>
+                                    <h5><Link>{featured.name}</Link></h5>
+                                    <div className={cx("featured__item__price")}>
+                                       {featured.price.toLocaleString('vi', { style: 'currency', currency: 'VND' }).replace(/\s/g, '')}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </Col>
-
-                    <Col md={3}>
-                        <div className={cx("featured__item")}>
-                            <div className={cx("featured__item__pic")}>
-                                <img src={images.featured} alt='' />
-                                <ul className={cx("featured__item__pic__hover")}>
-                                    <li><Link><FontAwesomeIcon icon={faHeart} /></Link></li>
-                                    <li><Link><FontAwesomeIcon icon={faRetweet} /></Link></li>
-                                    <li><Link><FontAwesomeIcon icon={faShoppingCart} /></Link></li>
-                                </ul>
-                            </div>
-                            <div className={cx("featured__item__text")}>
-                                <h5><Link>Raisin’n’nuts</Link></h5>
-                                <div className={cx("featured__item__price")}>
-                                    $30.00
-                                </div>
-                            </div>
-                        </div>
-                    </Col>
-
-                    <Col md={3}>
-                        <div className={cx("featured__item")}>
-                            <div className={cx("featured__item__pic")}>
-                                <img src={images.featured} alt='' />
-                                <ul className={cx("featured__item__pic__hover")}>
-                                    <li><Link><FontAwesomeIcon icon={faHeart} /></Link></li>
-                                    <li><Link><FontAwesomeIcon icon={faRetweet} /></Link></li>
-                                    <li><Link><FontAwesomeIcon icon={faShoppingCart} /></Link></li>
-                                </ul>
-                            </div>
-                            <div className={cx("featured__item__text")}>
-                                <h5><Link>Raisin’n’nuts</Link></h5>
-                                <div className={cx("featured__item__price")}>
-                                    $30.00
-                                </div>
-                            </div>
-                        </div>
-                    </Col>
-
-                    <Col md={3}>
-                        <div className={cx("featured__item")}>
-                            <div className={cx("featured__item__pic")}>
-                                <img src={images.featured} alt='' />
-                                <ul className={cx("featured__item__pic__hover")}>
-                                    <li><Link><FontAwesomeIcon icon={faHeart} /></Link></li>
-                                    <li><Link><FontAwesomeIcon icon={faRetweet} /></Link></li>
-                                    <li><Link><FontAwesomeIcon icon={faShoppingCart} /></Link></li>
-                                </ul>
-                            </div>
-                            <div className={cx("featured__item__text")}>
-                                <h5><Link>Raisin’n’nuts</Link></h5>
-                                <div className={cx("featured__item__price")}>
-                                    $30.00
-                                </div>
-                            </div>
-                        </div>
-                    </Col>
+                        </Col>
+                    ))}
                 </Row>
             </div>
         </div>

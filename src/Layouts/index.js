@@ -1,2 +1,5 @@
 export {default as DefaulLayout} from './DefaulLayout'
 export {default as SidebarOnly} from './SidebarOnly'
+export {default as OptionProduct} from './components/OptionProduct'
+export {default as ModalCart} from './components/ModalCart'
+export {default as NumberCart} from './components/NumberCart'

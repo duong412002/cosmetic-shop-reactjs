@@ -1,0 +1,19 @@
+.modal-dialog {
+    margin: 0;
+    padding-right: 0;
+    float: right;
+    min-height: 100vh;
+    min-width: 600px;
+    max-width: 400px;
+}
+
+.modal-content {
+    height: 100%;
+    padding: 16px;
+}
+
+.modal-title {
+    font-size: 2rem;
+    font-weight: 700;
+}
+

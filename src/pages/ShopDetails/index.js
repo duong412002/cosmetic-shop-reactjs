@@ -4,6 +4,8 @@ import styles from './ShopDetails.module.scss';
 import images from '~/assets/images';
 import Button from '~/components/Button'
 import Featured from '../Home/Featured';
+import * as productDetailServices from '~/apiServices/productDetailServices'
+
 
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
@@ -23,8 +25,9 @@ import {
 
 
 
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Row, Col } from 'react-bootstrap';
+import { useEffect, useState } from 'react';
 
 const cx = classNames.bind(styles)
 
@@ -41,6 +44,22 @@ let settings = {
 }
 
 function ShopDetails() {
+
+    const { id } = useParams();
+    const [product, setProduct] = useState([]);
+
+    useEffect(() => {
+
+        const fetchApi = async () => {
+            const result = await productDetailServices.productDetail(id);
+            setProduct(result);
+
+
+        }
+        fetchApi();
+    }, [id])
+    const amount = product.price ? product.price : '';
+    const formattedAmount = amount.toLocaleString('vi', { style: 'currency', currency: 'VND' }).replace(/\s/g, '');
 
     return (
         <div className={cx("product-details")}>
@@ -64,7 +83,7 @@ function ShopDetails() {
                 </Col>
                 <Col md={6}>
                     <div className={cx("product__details__text")}>
-                        <h3 className='xinchao'>Vetgetable’s Package</h3>
+                        <h3 className='xinchao'>{product.name}</h3>
                         <div className={cx("product__details__rating")}>
                             <FontAwesomeIcon icon={faStar} />
                             <FontAwesomeIcon icon={faStar} />
@@ -73,10 +92,10 @@ function ShopDetails() {
                             <FontAwesomeIcon icon={faStarHalfStroke} />
                             <span>(18 reviews)</span>
                         </div>
-                        <div className={cx("product__details__price")}>$50.00</div>
-                        <p>Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam
-                            vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet
-                            quam vehicula elementum sed sit amet dui. Proin eget tortor risus.</p>
+                        <div className={cx("product__details__price")}>
+                            {formattedAmount}
+                        </div>
+                        <p>{product.description}.</p>
                         <div className={cx('wrap-quantity')}>
                             <div className={cx("product__details__quantity")}>
                                 <div className={cx("quantity")}>
@@ -95,7 +114,7 @@ function ShopDetails() {
                         <ul>
                             <li><b>Availability</b> <span>In Stock</span></li>
                             <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
-                            <li><b>Weight</b> <span>0.5 kg</span></li>
+                            <li><b>Quantity</b> <span>{product.quantity}</span></li>
                             <li><b>Share on</b>
                                 <div className={cx("share")}>
                                     <Link><FontAwesomeIcon icon={faFacebook} /></Link>

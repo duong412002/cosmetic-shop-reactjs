@@ -5,6 +5,7 @@ import './slick-slider.scss';
 import images from '~/assets/images';
 import Product from './Product';
 import * as productServices from '~/apiServices/productServices'
+import { NumberCart } from '~/Layouts';
 
 import React from "react";
 import "slick-carousel/slick/slick-theme.css";
@@ -14,7 +15,7 @@ import { Fragment } from 'react';
 import { useState, useEffect } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faRetweet, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faRetweet, faShoppingCart, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import { Link, useParams } from 'react-router-dom';
 import { Row, Col } from 'react-bootstrap';
 import Pagination from '~/components/Pagination';
@@ -38,9 +39,12 @@ function Shop() {
     const [totalProduct, setTotalProduct] = useState()
     const [page, setPage] = useState(0)
     const [sz] = useState(4)
-    const {pageShop} = useParams();
+    const { pageShop } = useParams();
+    const [cart, setCart] = useState([])
+    const [warning, setWarning] = useState(false)
 
 
+    // Fet Api
     useEffect(() => {
 
         const fetchApi = async () => {
@@ -53,15 +57,37 @@ function Shop() {
         fetchApi();
     }, [pageShop])
 
+    // Pagination
+
     const paginate = (pageNumber) => {
         setPage(pageNumber)
     }
     const handlePaginate = (newPage) => {
         setPage(newPage)
     }
+
+    // Add To Cart
+
+    const handleClickAddCart = (data) => {
+        let isPresent = false;
+        cart.forEach((product) => {
+            if (data.id === product.id) {
+                isPresent = true;
+            }
+        })
+        if (isPresent) {
+            setWarning(true);
+            setTimeout(() => {
+                setWarning(false);
+            }, 2000);
+            return;
+        }
+        setCart([...cart, data])
+    }
+
+
     return (
         <Fragment>
-
             <div className={cx('product__discount')}>
 
                 <div className={cx("section-title product__discount__title")}>
@@ -196,38 +222,45 @@ function Shop() {
                 </Slider>
             </div>
             <div className={cx("filter__item")}>
-                <Row className={cx('wrap-filter')}>
-                    <Col md='5'>
-                        <div className={cx("filter__sort")}>
-                            <span>Sort By</span>
-                            <select>
-                                <option value="0">Default</option>
-                                <option value="0">Default</option>
-                            </select>
-                            {/* <div class="nice-select open" tabindex="0">
-                                <span class="current">Default</span>
-                                <ul class="list">
-                                    <li data-value="0" class="option">Default</li>
-                                    <li data-value="0" class="option selected focus">Default</li>
-                                </ul>
-                            </div> */}
-                        </div>
-                    </Col>
-                    <Col md='4'>
-                        <div className={cx("filter__found")}>
-                            <h6><span>16</span> Products found</h6>
-                        </div>
-                    </Col>
-                    <Col md='3'>
-                        <div className={cx("filter__option")}>
-                            123
-                        </div>
-                    </Col>
+                <Row>
+                    <div className={cx('wrap-filter')}>
+                        <Col md='5'>
+                            <div className={cx("filter__sort")}>
+                                <span>Sort By</span>
+                                <select>
+                                    <option value="0">Default</option>
+                                    <option value="0">Default</option>
+                                </select>
+                                {/* <div class="nice-select open" tabindex="0">
+                                    <span class="current">Default</span>
+                                    <ul class="list">
+                                        <li data-value="0" class="option">Default</li>
+                                        <li data-value="0" class="option selected focus">Default</li>
+                                    </ul>
+                                </div> */}
+                            </div>
+                        </Col>
+                        <Col md='4'>
+                            <div className={cx("filter__found")}>
+                                <h6><span>16</span> Products found</h6>
+                            </div>
+                        </Col>
+                        <Col md='3'>
+                            <NumberCart
+                                size={cart.length}
+                                cart={cart}
+                                setCart={setCart}
+                            />
+                        </Col>
+                    </div>
                 </Row>
             </div>
+
             <Row>
                 {productValue.map((product) => (
-                    <Product key={product.id} data={product} />
+                    <Product key={product.id} data={product}
+                        handleClickAddCart={handleClickAddCart}
+                    />
                 ))}
             </Row>
             <Pagination
@@ -237,6 +270,12 @@ function Shop() {
                 paginate={paginate}
                 onPageChange={handlePaginate}
             />
+            {
+                warning && <div className={cx('warning')}>
+                    <FontAwesomeIcon icon={faCircleInfo} />
+                    Item is already added to your cart
+                </div>
+            }
         </Fragment>
     );
 }

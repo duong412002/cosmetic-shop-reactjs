@@ -1,11 +1,9 @@
 
-import { Link, NavLink, useParams } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import './Nav.scss'
 
 function Nav() {
 
-    const { pageShop } = useParams();
-    console.log('pageShop',pageShop)
     return (
         <div className='header__menu'>
             <ul>
@@ -13,8 +11,7 @@ function Nav() {
                 <li><NavLink to={`/shop/1`}>Shop</NavLink></li>
                 <li>Pages
                     <ul className='header__menu__dropdown'>
-                        <li><Link to={'/shopDetails'}>Shop Details</Link></li>
-                        <li><Link to={'/shoppingCart'}>Shoping Cart</Link></li>
+                        <li><Link to={'/shopDetails/1'}>Shop Details</Link></li>
                         <li><Link to={'/checkout'}>Check Out</Link></li>
                         <li><Link to={'/blogDetails'}>Blog Details</Link></li>
                     </ul>
