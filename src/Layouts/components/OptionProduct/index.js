@@ -33,6 +33,7 @@ function OptionProduct({ data,handleClickAddCart }) {
                     </Link>
                 </li>
             </Tippy>
+            <div>xin chao</div>
         </Fragment>
     );
 }
