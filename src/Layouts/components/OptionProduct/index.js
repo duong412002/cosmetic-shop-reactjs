@@ -6,15 +6,13 @@ import 'tippy.js/dist/tippy.css';
 import Tippy from "@tippyjs/react";
 import './OptionProduct.scss'
 
-function OptionProduct({ data,handleClickAddCart }) {
-
-    
-
+function OptionProduct(props) {
+    console.log(props.data.data.id)
     return (
         <Fragment>
             <Tippy content="Look Detail" placement="top">
                 <li className="product-item">
-                    <Link to={`/shopDetails/${data.id}`}>
+                    <Link to={`/shopDetails/${props.data.data.id}`}>
                         <FontAwesomeIcon icon={faEye} />
                     </Link>
                 </li>
@@ -28,12 +26,11 @@ function OptionProduct({ data,handleClickAddCart }) {
             </Tippy>
             <Tippy content="Add to Cart" placement="top">
                 <li className="product-item">
-                    <Link onClick={() => handleClickAddCart(data)}>
+                    <Link  onClick={() => props.data.buyProduct(props.productCurrent)}>
                         <FontAwesomeIcon  icon={faShoppingCart} />
                     </Link>
                 </li>
             </Tippy>
-            <div>xin chao</div>
         </Fragment>
     );
 }

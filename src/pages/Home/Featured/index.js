@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import * as productServices from '~/apiServices/productServices'
 import { OptionProduct } from '~/Layouts';
+import FormatPrice from '~/Helpers/FormatPrice';
 
 const cx = classNames.bind(styles);
 function Featured() {
@@ -57,7 +58,7 @@ function Featured() {
                                 <div className={cx("featured__item__text")}>
                                     <h5><Link>{featured.name}</Link></h5>
                                     <div className={cx("featured__item__price")}>
-                                       {featured.price.toLocaleString('vi', { style: 'currency', currency: 'VND' }).replace(/\s/g, '')}
+                                    <FormatPrice price={featured.price}/>
                                     </div>
                                 </div>
                             </div>

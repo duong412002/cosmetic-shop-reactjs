@@ -21,18 +21,21 @@ import { Row, Col } from 'react-bootstrap';
 import Pagination from '~/components/Pagination';
 
 
+import { Provider } from "react-redux";
+import store from '~/redux/store';
+
 const cx = classNames.bind(styles)
 
-let settings = {
-    dots: true,
-    infinite: true,
-    speed: 1000,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    arrows: false,
-    autoplay: true,
-    autoplaySpeed: 3000,
-}
+// let settings = {
+//     dots: true,
+//     infinite: true,
+//     speed: 1000,
+//     slidesToShow: 3,
+//     slidesToScroll: 1,
+//     arrows: false,
+//     autoplay: true,
+//     autoplaySpeed: 3000,
+// }
 
 function Shop() {
     const [productValue, setProductValue] = useState([])
@@ -40,7 +43,6 @@ function Shop() {
     const [page, setPage] = useState(0)
     const [sz] = useState(4)
     const { pageShop } = useParams();
-    const [cart, setCart] = useState([])
     const [warning, setWarning] = useState(false)
 
 
@@ -66,29 +68,10 @@ function Shop() {
         setPage(newPage)
     }
 
-    // Add To Cart
-
-    const handleClickAddCart = (data) => {
-        let isPresent = false;
-        cart.forEach((product) => {
-            if (data.id === product.id) {
-                isPresent = true;
-            }
-        })
-        if (isPresent) {
-            setWarning(true);
-            setTimeout(() => {
-                setWarning(false);
-            }, 2000);
-            return;
-        }
-        setCart([...cart, data])
-    }
-
-
     return (
-        <Fragment>
-            <div className={cx('product__discount')}>
+        <Provider store={store}>
+            <Fragment>
+                {/* <div className={cx('product__discount')}>
 
                 <div className={cx("section-title product__discount__title")}>
                     <h2>Sale Off</h2>
@@ -220,63 +203,63 @@ function Shop() {
                         </div>
                     </div>
                 </Slider>
-            </div>
-            <div className={cx("filter__item")}>
-                <Row>
-                    <div className={cx('wrap-filter')}>
-                        <Col md='5'>
-                            <div className={cx("filter__sort")}>
-                                <span>Sort By</span>
-                                <select>
-                                    <option value="0">Default</option>
-                                    <option value="0">Default</option>
-                                </select>
-                                {/* <div class="nice-select open" tabindex="0">
+                </div> */}
+                <div className={cx("filter__item")}>
+                    <Row>
+                        <div className={cx('wrap-filter')}>
+                            <Col md='5'>
+                                <div className={cx("filter__sort")}>
+                                    <span>Sort By</span>
+                                    <select>
+                                        <option value="0">Default</option>
+                                        <option value="0">Default</option>
+                                    </select>
+                                    {/* <div class="nice-select open" tabindex="0">
                                     <span class="current">Default</span>
                                     <ul class="list">
                                         <li data-value="0" class="option">Default</li>
                                         <li data-value="0" class="option selected focus">Default</li>
                                     </ul>
                                 </div> */}
-                            </div>
-                        </Col>
-                        <Col md='4'>
-                            <div className={cx("filter__found")}>
-                                <h6><span>16</span> Products found</h6>
-                            </div>
-                        </Col>
-                        <Col md='3'>
-                            <NumberCart
-                                size={cart.length}
-                                cart={cart}
-                                setCart={setCart}
-                            />
-                        </Col>
-                    </div>
-                </Row>
-            </div>
+                                </div>
+                            </Col>
+                            <Col md='4'>
+                                <div className={cx("filter__found")}>
+                                    <h6><span>16</span> Products found</h6>
+                                </div>
+                            </Col>
+                            <Col md='3'>
+                                <NumberCart
 
-            <Row>
-                {productValue.map((product) => (
-                    <Product key={product.id} data={product}
-                        handleClickAddCart={handleClickAddCart}
-                    />
-                ))}
-            </Row>
-            <Pagination
-                sz={sz}
-                page={page}
-                totalProduct={totalProduct}
-                paginate={paginate}
-                onPageChange={handlePaginate}
-            />
-            {
-                warning && <div className={cx('warning')}>
-                    <FontAwesomeIcon icon={faCircleInfo} />
-                    Item is already added to your cart
+                                />
+                            </Col>
+                        </div>
+                    </Row>
                 </div>
-            }
-        </Fragment>
+
+                <Row>
+                    {productValue.map((product) => (
+                        <Product key={product.id} data={product}
+
+                        />
+                    ))}
+                </Row>
+                <Pagination
+                    sz={sz}
+                    page={page}
+                    totalProduct={totalProduct}
+                    paginate={paginate}
+                    onPageChange={handlePaginate}
+                />
+                {
+                    warning && <div className={cx('warning')}>
+                        <FontAwesomeIcon icon={faCircleInfo} />
+                        Item is already added to your cart
+                    </div>
+                }
+            </Fragment>
+        </Provider>
+
     );
 }
 

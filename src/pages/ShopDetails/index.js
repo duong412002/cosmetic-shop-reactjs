@@ -28,6 +28,7 @@ import {
 import { Link, useParams } from 'react-router-dom';
 import { Row, Col } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
+import FormatPrice from '~/Helpers/FormatPrice';
 
 const cx = classNames.bind(styles)
 
@@ -58,8 +59,6 @@ function ShopDetails() {
         }
         fetchApi();
     }, [id])
-    const amount = product.price ? product.price : '';
-    const formattedAmount = amount.toLocaleString('vi', { style: 'currency', currency: 'VND' }).replace(/\s/g, '');
 
     return (
         <div className={cx("product-details")}>
@@ -93,7 +92,7 @@ function ShopDetails() {
                             <span>(18 reviews)</span>
                         </div>
                         <div className={cx("product__details__price")}>
-                            {formattedAmount}
+                            <FormatPrice price={product.price} />
                         </div>
                         <p>{product.description}.</p>
                         <div className={cx('wrap-quantity')}>

@@ -2,7 +2,6 @@
 
 import styles from './Sidebar.module.scss';
 import * as categoryServices from '~/apiServices/categoryServices'
-import * as productServices from '~/apiServices/productServices'
 
 import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
@@ -13,23 +12,17 @@ const cx = classNames.bind(styles)
 function Sidebar() {
 
     const [categoryValue, setCategoryValue] = useState([])
-    const [categoryId, setCategoryId] = useState(5)
 
 
     useEffect(() => {
         const fetchApi = async () => {
             const result = await categoryServices.category();
-            const id = await productServices.getProductByCate(categoryId)
 
             setCategoryValue(result)
-            setCategoryId(id)
         }
         fetchApi();
-    }, [categoryId])
+    }, [])
 
-    const filterResult = (id) => {
-        
-    }
 
     return (
         <div className={cx('sidebar')}>
@@ -37,7 +30,7 @@ function Sidebar() {
                 <h4>Categories</h4>
                 <ul>
                     {categoryValue.map((category) => (
-                        <li onClick={() => setCategoryId(category.id)} key={category.id}>
+                        <li  key={category.id}>
                             {category.name}
                         </li>
                     ))}

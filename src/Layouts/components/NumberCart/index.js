@@ -12,7 +12,7 @@ import { useState } from 'react';
 
 const cx = classNames.bind(styles)
 
-function NumberCart({ size, cart, setCart }) {
+function NumberCart() {
 
 
 
@@ -21,15 +21,13 @@ function NumberCart({ size, cart, setCart }) {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    // const amount = 1800745;
-    // const formattedAmount = amount.toLocaleString('vi', { style: 'currency', currency: 'VND' }).replace(/\s/g, '');
 
     return (
         <div className={cx('header__cart')}>
             <Button onClick={handleShow}>
                 <FontAwesomeIcon icon={faCartShopping} />
                 <div className={cx('wrap-quantity')}>
-                    <span className={cx('quantity-cart')}>{size}</span>
+                    <span className={cx('quantity-cart')}>0</span>
                 </div>
             </Button>
             <Modal show={shows} onHide={handleClose}>
@@ -38,7 +36,7 @@ function NumberCart({ size, cart, setCart }) {
                 </Modal.Header>
 
                 <Modal.Body>
-                    <ModalCart cartItem={cart} setCart={setCart} />
+                    <ModalCart />
                 </Modal.Body>
             </Modal>
         </div>
