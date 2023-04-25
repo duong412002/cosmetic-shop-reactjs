@@ -7,12 +7,11 @@ import Tippy from "@tippyjs/react";
 import './OptionProduct.scss'
 
 function OptionProduct(props) {
-    console.log(props.data.data.id)
     return (
         <Fragment>
             <Tippy content="Look Detail" placement="top">
                 <li className="product-item">
-                    <Link to={`/shopDetails/${props.data.data.id}`}>
+                    <Link to={`/shopDetails/${props.id}`}>
                         <FontAwesomeIcon icon={faEye} />
                     </Link>
                 </li>

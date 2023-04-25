@@ -54,8 +54,6 @@ function ShopDetails() {
         const fetchApi = async () => {
             const result = await productDetailServices.productDetail(id);
             setProduct(result);
-
-
         }
         fetchApi();
     }, [id])

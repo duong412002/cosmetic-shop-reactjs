@@ -40,6 +40,7 @@ function Product(props) {
                         <ul className={cx("product__item__pic__hover")}>
                             <OptionProduct
                                 data={props}
+                                id={product_current.id}
                                 productCurrent={product_current}
                             />
                         </ul>
