@@ -14,9 +14,9 @@ import FormatPrice from "~/Helpers/FormatPrice";
 const cx = classNames.bind(styles)
 
 function ModalCart(props) {
+
     const [cartItem, setCartItem] = useState(props.cart)
     const [price, setPrice] = useState(0);
-
     const handleChange = (item, d) => {
         let ind = -1;
         cartItem.forEach((data, index) => {

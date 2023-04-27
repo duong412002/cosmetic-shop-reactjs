@@ -5,7 +5,6 @@ import './slick-slider.scss';
 import images from '~/assets/images';
 import Product from './Product';
 import * as productServices from '~/apiServices/productServices'
-import { NumberCart } from '~/Layouts';
 
 import React from "react";
 import "slick-carousel/slick/slick-theme.css";
@@ -20,9 +19,6 @@ import { Link, useParams } from 'react-router-dom';
 import { Row, Col } from 'react-bootstrap';
 import Pagination from '~/components/Pagination';
 
-
-import { Provider } from "react-redux";
-import store from '~/redux/store';
 
 const cx = classNames.bind(styles)
 
@@ -69,7 +65,6 @@ function Shop() {
     }
 
     return (
-        <Provider store={store}>
             <Fragment>
                 {/* <div className={cx('product__discount')}>
 
@@ -229,9 +224,7 @@ function Shop() {
                                 </div>
                             </Col>
                             <Col md='3'>
-                                <NumberCart
-
-                                />
+                               
                             </Col>
                         </div>
                     </Row>
@@ -258,7 +251,6 @@ function Shop() {
                     </div>
                 }
             </Fragment>
-        </Provider>
 
     );
 }

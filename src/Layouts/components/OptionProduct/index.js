@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faMoneyCheck, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import 'tippy.js/dist/tippy.css';
@@ -7,6 +7,7 @@ import Tippy from "@tippyjs/react";
 import './OptionProduct.scss'
 
 function OptionProduct(props) {
+
     return (
         <Fragment>
             <Tippy content="Look Detail" placement="top">
@@ -25,8 +26,8 @@ function OptionProduct(props) {
             </Tippy>
             <Tippy content="Add to Cart" placement="top">
                 <li className="product-item">
-                    <Link  onClick={() => props.data.buyProduct(props.productCurrent)}>
-                        <FontAwesomeIcon  icon={faShoppingCart} />
+                    <Link onClick={() => props.data.buyProduct(props.productCurrent)}>
+                        <FontAwesomeIcon icon={faShoppingCart} />
                     </Link>
                 </li>
             </Tippy>

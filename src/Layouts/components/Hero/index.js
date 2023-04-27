@@ -12,6 +12,7 @@ import { Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
+import { NumberCart } from '~/Layouts';
 
 import Tippy from '@tippyjs/react/headless';
 import 'react-tippy/dist/tippy.css';
@@ -77,7 +78,7 @@ function Hero() {
                         </Col>
 
                         <Col md={1}>
-                            
+                            <NumberCart/>
                         </Col>
                     </div>
                 </Row>

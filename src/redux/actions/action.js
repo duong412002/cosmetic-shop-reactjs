@@ -13,3 +13,10 @@ export const deleteProduct = (product) => {
     payload: product,
   };
 };
+
+export const getSizeCart = (product) => {
+  return {
+    type: actionType.GET_SIZE_CART,
+    payload: product,
+  };
+};
